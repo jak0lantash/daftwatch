@@ -1,0 +1,4 @@
+.ber { display: inline-block; min-width: 2.3rem; text-align: center; padding: 0 .4rem; border-radius: 3px 10px 10px 3px; color: #fff; font: 700 .95rem/1.5 var(--cond); }
+.ber-A { background: #0b8a3e; } .ber-B { background: #57a53b; } .ber-C { background: #b9c22a; color: #2b3136; }
+.ber-D { background: #f2c12e; color: #2b3136; } .ber-E { background: #ee8a2a; } .ber-F { background: #e2582b; } .ber-G { background: #c62a2a; }
+.ber-X { background: var(--muted); }

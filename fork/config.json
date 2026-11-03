@@ -1,0 +1,50 @@
+{
+  "id": "daftwatch",
+  "name": "DaftWatch",
+  "icon": "🏠",
+  "item": "home", "items": "homes",
+  "share_title": "Homes I've saved on daft.ie",
+  "default_site": "daft",
+  "hide_no_price": false,
+  "fields": [
+    {"key": "ptype", "label": "Type", "type": "text", "exclude": true, "filter": "contains"},
+    {"key": "beds", "label": "Bedrooms", "type": "int", "exclude": true, "filter": "range"},
+    {"key": "baths", "label": "Bathrooms", "type": "int"},
+    {"key": "ber", "label": "BER", "type": "text", "exclude": true, "format": "ber"},
+    {"key": "floor_m2", "label": "Floor area", "type": "decimal", "decimals": 0, "unit": " m²", "filter": "min"},
+    {"key": "ppm2", "label": "Price per m²", "type": "int", "format": "eur", "unit": "/m²"},
+    {"key": "town", "label": "Area", "type": "text", "exclude": true},
+    {"key": "county", "label": "County", "type": "text", "exclude": true},
+    {"key": "sale_type", "label": "Status", "type": "text", "exclude": true},
+    {"key": "seller", "label": "Agent", "type": "text", "exclude": true}
+  ],
+  "card": {
+    "heading": "[{beds} bed] {ptype}",
+    "subtitle": "{title}",
+    "sticker": "[{beds} bed] · [BER {ber}]",
+    "badge": "sale_type",
+    "rows": [
+      "ptype", "beds", "baths", "ber",
+      {"key": "floor_m2", "template": "{floor_m2}[ · {ppm2}]"},
+      "town", {"key": "county", "hide_if": "Cork"}, "distance", "sale_type", "seller",
+      "searches", "published", "first_seen"
+    ],
+    "list_meta": "{title}[ · {distance}]",
+    "list_badge": "ber",
+    "share": "{price} · [{beds} bed] {ptype}[ · BER {ber}] · {title}"
+  },
+  "compare": {
+    "group": ["kind", "beds"], "per": "floor_m2", "min_per": 20, "min": 5,
+    "label": "similar {beds}-bed homes", "per_label": "per m²", "per_unit": "/m²"
+  },
+  "centre": {"name": "Ballincollig", "lat": 51.8879, "lng": -8.5927},
+  "default_searches": [
+    {"name": "4+ bed house near Ballincollig (west)",
+     "url": "https://www.daft.ie/property-for-sale/ballincollig-cork/houses?salePrice_to=1000000&numBeds_from=4&radius=20000",
+     "filters": {"beds": {"min": 4}, "price": {"max": 1000000}, "distance": {"max": 15}, "side": "west"}},
+    {"name": "2+ bed apartment within 20 km",
+     "url": "https://www.daft.ie/property-for-sale/ballincollig-cork/apartments?salePrice_to=400000&numBeds_from=2&radius=20000",
+     "filters": {"beds": {"min": 2}, "price": {"max": 400000}, "distance": {"max": 20}}}
+  ],
+  "legacy_search_columns": {"max_km": "distance.max", "west_only": "side", "types": "ptype.contains"}
+}
